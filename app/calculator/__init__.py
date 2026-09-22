@@ -3,10 +3,8 @@ This file is the "app/calculator.py" file. It contains a simple calculator that 
 and divide numbers based on what the user types.
 """
 
-# First, we need to get some functions that can actually do the math for us. These functions (addition,
-# subtraction, multiplication, and division) are in another file called "operations.py" in the "app" folder.
-# This is like opening a toolbox and pulling out the tools we need to do our math.
-from app.operations import addition, subtraction, multiplication, division
+# import Operations class
+from app.operations import Operations
 
 # Now we're going to create the main function called "calculator".
 # A function is just a block of code that does something when you call it, kind of like a recipe that tells the
@@ -39,16 +37,16 @@ def calculator():
             print("Invalid input. Please follow the format: <operation> <num1> <num2>")
             continue  # This "continue" means: try again by going back to the top of the loop.
 
-        # Now we check what operation the user asked for and call the right function (addition, subtraction, etc.).
+        # Now we check what operation the user asked for and call the right method (addition, subtraction, etc.).
         if operation == "add":
-            result = addition(num1, num2)  # We call the addition function to add the two numbers.
+            result = Operations.addition(num1, num2)  # We call the addition method to add the two numbers.
         elif operation == "subtract":
-            result = subtraction(num1, num2)  # We call the subtraction function to subtract the two numbers.
+            result = Operations.subtraction(num1, num2)  # We call the subtraction method to subtract the two numbers.
         elif operation == "multiply":
-            result = multiplication(num1, num2)  # We call the multiplication function to multiply the two numbers.
+            result = Operations.multiplication(num1, num2)  # We call the multiplication method to multiply the two numbers.
         elif operation == "divide":
             try:
-                result = division(num1, num2)  # We call the division function to divide the two numbers.
+                result = Operations.division(num1, num2)  # We call the division method to divide the two numbers.
             except ValueError as e:
                 # This part handles the case where someone tries to divide by zero, which we can't do.
                 # The division function will throw an error if someone tries dividing by zero, and we catch that error here.
